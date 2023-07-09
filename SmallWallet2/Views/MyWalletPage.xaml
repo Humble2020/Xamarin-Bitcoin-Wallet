@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             BackgroundColor="#3B2C20"
+              x:Name="BindingContextPage"
+             Title="Click on your wallet"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.BackButtonTitle="False"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="SmallWallet2.Views.MyWalletPage">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior
+        IsEnabled="False"
+            IconOverride="list_1.png"/>
+    </Shell.BackButtonBehavior>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="walletCount"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <StackLayout Margin="20,3,20,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Vertical" Grid.Row="0">
+                    <StackLayout Orientation="Horizontal">
+                        <material:MaterialLabel Text="{Binding BTCString}" HorizontalOptions="EndAndExpand" FontAttributes="None" TextColor="RosyBrown" FontSize="12"/>
+                        <Image Source="online.png" HorizontalOptions="End" Aspect="AspectFit" HeightRequest="20" x:Name="onlinet" IsVisible="{Binding Onlinebool}"/>
+                        <Image Source="offline.png" HorizontalOptions="End" Aspect="AspectFit" HeightRequest="20" x:Name="offlinet" IsVisible="{Binding Offlinebool}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <ActivityIndicator  Color="Red" x:Name="BusyBusy" HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"  IsRunning="{Binding IsLoading}"/>
+                <StackLayout Grid.Row="1" Margin="0,-7,0,0">
+                    <ListView x:Name="ListViewOfwalletsListview" ItemsSource="{Binding Wallets}" HasUnevenRows="True" SeparatorVisibility="Default"
+                      RowHeight="90" CachingStrategy="RecycleElement">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <!-- Content -->
+                                    <Frame HasShadow="True" BackgroundColor="MediumVioletRed" x:Name="JBframey"
+                                         HeightRequest="17" Margin="0,0,0,3" CornerRadius="4">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.SelectWalletCommand, Source={x:Reference BindingContextPage}}"
+                                                              Tapped="OnItemTapped"
+                                                              CommandParameter="{Binding .}"/>
+                                        </Frame.GestureRecognizers>
+                                        <StackLayout>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <StackLayout Orientation="Horizontal" Grid.Row="0">
+                                                    <material:MaterialLabel Text="{Binding Name}" FontAttributes="Bold" FontSize="16" 
+                                                    HorizontalOptions="Start" TextTransform="Uppercase" Margin="0,-7,0,0"
+                                                    TextColor="White"/>
+                                                    <Image Source="bitcoin.png" Aspect="AspectFit" HeightRequest="37"
+                                                           HorizontalOptions="EndAndExpand" Margin="0,-15,0,0"/>
+                                                </StackLayout>
+
+                                                <StackLayout Orientation="Horizontal" Grid.Row="1" Margin="0,-2,0,2">
+                                                    <material:MaterialLabel Text="wallet created:" FontAttributes="None" FontSize="12" 
+                                                    HorizontalOptions="Start"  TextColor="GhostWhite" Margin="0,-11,0,0"/>
+                                                    <material:MaterialLabel Text="{Binding DateCreated}" FontAttributes="Bold" FontSize="11"
+                                                    HorizontalOptions="Start"  TextColor="DarkGray" Margin="0,-10,0,0"/>
+                                                </StackLayout>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </ViewCell>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

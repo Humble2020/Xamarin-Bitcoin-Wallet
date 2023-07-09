@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              Title="Stake Wallet"
+             BackgroundColor="#3B2C20"
+              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             NavigationPage.HasNavigationBar="false"
+             x:Class="SmallWallet2.Views.ClickPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Recover" IconImageSource="chronometer.png" Clicked="RecoverClicked"/>
+        <ToolbarItem Text="My wallets" IconImageSource="list_1.png" Clicked="ListClicked"/>
+        <ToolbarItem Text="New" Clicked="GotoCreatepage"  IconImageSource="newFile.png"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView Margin="8,5,8,0" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame HeightRequest="165" BackgroundColor="#6A2C8B"
+                   CornerRadius="5" Grid.Row="0" Padding="10,20,10,18">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Orientation="Horizontal">
+                        <ImageButton Source="Money_transfer1.png" Aspect="AspectFit" HorizontalOptions="Start" HeightRequest="40"
+                                    BackgroundColor="Transparent" Clicked="SendPress_Clicked" Margin="6,0,0,0"/>
+                        <ImageButton Source="receive.png" Aspect="AspectFit" HorizontalOptions="Start" HeightRequest="40" Margin="6,0,0,0"
+                                     BackgroundColor="Transparent" Clicked="receivePress_Clicked" />
+                        <ImageButton Source="delete.png" BackgroundColor="Transparent" HeightRequest="35"
+                              Margin="0,-40,4,0" HorizontalOptions="EndAndExpand" Clicked="Button_Clicked"/>
+                        <Image Source="online.png" HorizontalOptions="End" Aspect="AspectFit" HeightRequest="20" x:Name="onlinet" IsVisible="false"
+                                Margin="-14,-44,0,0"/>
+                        <Image Source="offline.png" HorizontalOptions="End" Aspect="AspectFit" HeightRequest="20" x:Name="offlinet" IsVisible="false"
+                                Margin="-14,-44,0,0"/>
+                    </StackLayout>
+                    <ActivityIndicator  Color="Red" x:Name="BusyBusy" HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"  IsRunning="{Binding IsLoading}"/>
+                    <StackLayout Grid.Row="1" Orientation="Horizontal">
+                        <Label HorizontalOptions="CenterAndExpand">
+                            <Label.FormattedText>
+                                <FormattedString >
+                                    <FormattedString.Spans>
+                                        <Span Text="{Binding availableBalance}" TextColor="White" FontSize="28" FontAttributes="Bold"/>
+                                        <Span Text=" BTC" FontAttributes="Bold" TextColor="White" FontSize="28"/>
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2">
+                        <StackLayout Orientation="Horizontal">
+                            <material:MaterialLabel Text="Total Balance:" TextColor="White" HorizontalOptions="Start"
+                               FontSize="12" />
+                            <Label HorizontalOptions="Start">
+                                <Label.FormattedText>
+                                    <FormattedString >
+                                        <FormattedString.Spans>
+                                            <Span Text="{Binding totalBalance}" TextColor="White"  FontSize="12" FontAttributes="None"/>
+                                            <Span Text=" BTC" FontAttributes="None" TextColor="White"  FontSize="12"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Margin="3,-6,0,0">
+                            <material:MaterialLabel Text="UnConfirmed:" TextColor="DarkGray" HorizontalOptions="Start"
+                               FontSize="12"/>
+                            <Label HorizontalOptions="Start">
+                                <Label.FormattedText>
+                                    <FormattedString >
+                                        <FormattedString.Spans>
+                                            <Span Text="{Binding pendingBalance}" TextColor="DarkGray"  FontSize="12" FontAttributes="None"/>
+                                            <Span Text=" BTC" FontAttributes="None" TextColor="DarkGray"  FontSize="12"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label HorizontalOptions="Start" Margin="3,-7,0,0">
+                                <Label.FormattedText>
+                                    <FormattedString >
+                                        <FormattedString.Spans>
+                                            <Span Text="{Binding BBTCOIN}" TextColor="DarkGray"  FontSize="12" FontAttributes="None"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label HorizontalOptions="Start" Margin="3,-7,0,0">
+                                <Label.FormattedText>
+                                    <FormattedString >
+                                        <FormattedString.Spans>
+                                            <Span Text="{Binding BalaceFromBtcToUSD}" TextColor="DarkGray"  FontSize="12" FontAttributes="None"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout  Margin="0,-59,4,5" Grid.Row="3" Spacing="10">
+                        <ImageButton Source="bar_chart.png" Aspect="AspectFit" HorizontalOptions="EndAndExpand" HeightRequest="32"
+                                     BackgroundColor="Transparent" IsVisible="true"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+            <StackLayout Margin="0,3,0,0" Grid.Row="1">
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <material:MaterialLabel Text="Current Wallet Transactions" FontSize="16"
+                                        HorizontalOptions="Start" Margin="0,0,0,0" TextColor="White"
+                                        FontAttributes="Bold"/>
+                    <Image Source="transaction.png" Aspect="AspectFit" HorizontalOptions="EndAndExpand" HeightRequest="32"/>
+                </StackLayout>
+                <ListView x:Name="Transact_Listview" HasUnevenRows="True" SeparatorVisibility="Default"
+                      ItemTapped="ListViewOfManagement_ItemTapped" RowHeight="90" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Content -->
+                                <Frame BackgroundColor="Purple" HasShadow="True"
+                                                                HeightRequest="20" Margin="0,0,0,3" CornerRadius="2">
+                                    <StackLayout>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0">
+                                                <material:MaterialLabel Text="{Binding address}" FontAttributes="Bold" FontSize="13" 
+                                                    HorizontalOptions="Start" TextTransform="Uppercase" Margin="0,-7,0,0"
+                                                    TextColor="White"/>
+                                                <Image Source="ic_shortcut_arrow_forward_ios.png" Aspect="AspectFit" HeightRequest="20"
+                                                           HorizontalOptions="EndAndExpand"/>
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal" Grid.Row="1" Margin="0,-7,0,0">
+                                                <material:MaterialLabel Text="Date:" FontAttributes="None" FontSize="12"
+                                                    HorizontalOptions="Start"  TextColor="LightGray" Margin="0,-5,-4,0"/>
+                                                <material:MaterialLabel Text="{Binding date}" FontAttributes="None" FontSize="12"
+                                                    HorizontalOptions="Start"  TextColor="LightGray" Margin="0,-5,0,0"/>
+                                                <Label HorizontalOptions="EndAndExpand" Margin="0,-5,0,0">
+                                                    <Label.FormattedText>
+                                                        <FormattedString >
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding value}" TextColor="Yellow"  FontSize="12" FontAttributes="Bold"/>
+                                                                <Span Text=" BTC" FontAttributes="Bold" TextColor="Yellow"  FontSize="12"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

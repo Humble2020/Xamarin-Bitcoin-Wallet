@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls" 
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             Title="Receive Bitcoins"
+              BackgroundColor="#3B2C20"
+             x:Class="SmallWallet2.Views.ReceivePage">
+    <StackLayout Margin="14,5,14,0" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame HeightRequest="45" BackgroundColor="#582A72"
+                   CornerRadius="5" Grid.Row="0" Padding="10,20,10,18">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout>
+                        <Label Text="Fund Wallet" FontSize="15"
+                       FontAttributes="Bold" TextColor="White"/>
+                        <Label Text="Funding your wallet has never been this easy." FontSize="13"
+                       FontAttributes="None" TextColor="White" Margin="0,-8,0,0"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="EndAndExpand">
+                        <Image Source="confetti.png" HeightRequest="55" Margin="0,-7,10,0"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame HeightRequest="35" BackgroundColor="Transparent"
+                   CornerRadius="5" Grid.Row="1">
+                <StackLayout>
+                    <material:MaterialLabel Text="grow your wallet sending to your wallet receiving address below" FontSize="15"
+                       FontAttributes="Bold" TextColor="White" TextTransform="Uppercase"/>
+                </StackLayout>
+            </Frame>
+            <Frame HeightRequest="190" BackgroundColor="Purple" WidthRequest="190"
+                   CornerRadius="5" Grid.Row="2" HorizontalOptions="CenterAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <zxing:ZXingBarcodeImageView Style="{DynamicResource QrCodeStyle}"
+                                                 x:Name="dfc"
+                                                 BarcodeFormat="QR_CODE">
+                        <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                            <zxcm:EncodingOptions Width="189"
+                                                  Height="189"/>
+                        </zxing:ZXingBarcodeImageView.BarcodeOptions>
+                    </zxing:ZXingBarcodeImageView>
+                </StackLayout>
+            </Frame>
+            <StackLayout Grid.Row="3" Margin="0,18,0,0" Orientation="Horizontal">
+                <material:MaterialLabel  x:Name="receib" FontAttributes="Bold"
+                       FontSize="15" TextColor="White" HorizontalOptions="Start" Margin="14,0,0,0"/>
+                <ImageButton Source="copy.png" HorizontalOptions="EndAndExpand" HeightRequest="25" BackgroundColor="Transparent"
+                       Margin="0,-4,19,0" Clicked="ImageButton_Clicked"/>
+
+            </StackLayout>
+            <StackLayout  Grid.Row="4" Padding="0,9,0,0" Orientation="Horizontal">
+            </StackLayout>
+
+        </Grid>
+    </StackLayout>
+</ContentPage>

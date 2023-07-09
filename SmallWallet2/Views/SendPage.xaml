@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             Title="Send Bitcoins"
+              BackgroundColor="#3B2C20"
+             x:Class="SmallWallet2.Views.SendPage">
+    <StackLayout Margin="14,5,14,0" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame HeightRequest="45" BackgroundColor="#6A2C8B"
+                   CornerRadius="5" Grid.Row="0" Padding="10,20,10,18">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout>
+                        <Label Text="Create Bitcoin Transaction" FontSize="15"
+                       FontAttributes="Bold" TextColor="White"/>
+                        <Label Text="Send Bitcoins to anyone around the world." FontSize="13"
+                       FontAttributes="None" TextColor="White" Margin="0,-8,0,0"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="EndAndExpand">
+                        <Image Source="money_transfer1.png" HeightRequest="55" Margin="0,-7,10,0"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <StackLayout Grid.Row="1" Margin="0,18,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <material:MaterialEntry Placeholder="recipient Bitcoin Address"  PlaceholderColor="DarkGray"
+                       FontSize="15" TextColor="Black" BackgroundColor="White" Text="{Binding ReceipientBitcoinAdr}"
+                     BorderColor="Black" Grid.Column="0"/>
+                    <ImageButton Source="paste.png" Aspect="AspectFit" HeightRequest="20" Grid.Column="1" BackgroundColor="Transparent"
+                                 Command="{Binding Pastecommand}"/>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Margin="0,0,0,0" Orientation="Horizontal">
+                <material:MaterialEntry Placeholder="0.00" HorizontalOptions="FillAndExpand"  PlaceholderColor="DarkGray"
+                       FontSize="15" TextColor="Black" BackgroundColor="White" x:Name="amountsendBTC" 
+                       BorderColor="Black" Text="{Binding SendingAmount}"/>
+                <material:MaterialEntry Placeholder="0.00" HorizontalOptions="FillAndExpand" x:Name="amountsendUSD"
+                       FontSize="15" TextColor="Black" BackgroundColor="White" PlaceholderColor="DarkGray"
+                       BorderColor="Black" TextChanged="ChangeToUsd" Text="{Binding USD_amount}" />
+
+            </StackLayout>
+            <StackLayout Grid.Row="3" Margin="70,0,0,-12" Orientation="Horizontal">
+                <material:MaterialLabel FontSize="15"
+                       Text="BTC" FontAttributes="Bold" TextColor="White"
+                       HorizontalOptions="StartAndExpand"/>
+                <material:MaterialLabel FontSize="15" Margin="20,0,-10,0"
+                       Text="USD" FontAttributes="Bold" TextColor="White"
+                       HorizontalOptions="EndAndExpand"/>
+                <ActivityIndicator  Color="Red" x:Name="BusyBusy" HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"  IsRunning="{Binding IsLoading}"/>
+
+            </StackLayout>
+            <!--<StackLayout Grid.Row="4"  Margin="0,-25,0,0" IsVisible="false">
+                <StackLayout  Orientation="Horizontal">
+                    <material:MaterialLabel Text="Fee:" FontSize="12" TextColor="White" Margin="12,0,0,0" FontAttributes="Bold"/>
+                    <material:MaterialLabel FontSize="12" TextColor="YellowGreen" Margin="0,0,0,0" FontAttributes="Bold"
+                                           TextTransform="None" Text="{Binding feeDisplay}"/>
+                    <Slider x:Name="feenSlider"  MaximumTrackColor="Purple" MinimumTrackColor="DarkBlue" Value="{Binding valueSlider}" Maximum="2" Minimum="0"
+                                HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+            </StackLayout>-->
+            <StackLayout Grid.Row="5" Orientation="Horizontal" Margin="0,-5,0,0">
+                <material:MaterialButton Text="Maximum"  HorizontalOptions="Start" Clicked="OnSetMaxAmountButtonClicked"
+                        BackgroundColor="Black" TextColor="White" Command="{Binding ClickMaximum}"/>
+                <material:MaterialButton Text="Send Bitcoin now"  HorizontalOptions="StartAndExpand" Clicked="OnSetMaxAmount2ButtonClicked"
+                        BackgroundColor="DarkBlue" TextColor="White" Command="{Binding broadcastBitcoin}"/>
+            </StackLayout>
+
+        </Grid>
+    </StackLayout>
+</ContentPage>

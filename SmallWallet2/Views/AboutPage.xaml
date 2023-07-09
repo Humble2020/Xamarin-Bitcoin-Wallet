@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmallWallet2.Views.AboutPage"
+              BackgroundColor="#3B2C20"
+             xmlns:vm="clr-namespace:SmallWallet2.ViewModels" xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout Margin="14,5,14,0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Orientation="Vertical" Margin="10,10,10,0">
+                <material:MaterialLabel 
+                    Text="STAKE WALLET"
+                    FontSize="25" HorizontalOptions="CenterAndExpand"
+                       FontAttributes="Bold" TextColor="RosyBrown" TextTransform="None"/>
+            </StackLayout >
+            <StackLayout Grid.Row="1" Orientation="Vertical" Margin="10,10,10,0" HorizontalOptions="FillAndExpand">
+                <material:MaterialLabel 
+                    Text="A simple to use bitcoin wallet."
+                    FontSize="15" HorizontalOptions="CenterAndExpand"
+                       FontAttributes="None" TextColor="RosyBrown" TextTransform="None"/>
+                <material:MaterialLabel 
+                    Text="ver 1.0 | We believe on simplicity."
+                    FontSize="15" HorizontalOptions="CenterAndExpand"
+                       FontAttributes="None" TextColor="RosyBrown" TextTransform="None"/>
+                <material:MaterialLabel 
+                    Text="With Stake Wallet, you can have more than one wallet and transfer funds between them at your finger tips."
+                    FontSize="15" HorizontalOptions="CenterAndExpand"
+                       FontAttributes="None" TextColor="RosyBrown" TextTransform="None"/>
+            </StackLayout >
+            <StackLayout Grid.Row="2" Orientation="Vertical" Margin="10,10,10,0">
+                <material:MaterialLabel 
+                    Text="Is there any way we can improve on this wallet? we can't do this alone..."
+                    FontSize="15" HorizontalOptions="CenterAndExpand"
+                       FontAttributes="None" TextColor="RosyBrown" TextTransform="None"/>
+                <material:MaterialLabel 
+                    Text="write us: myemail@gmail.com"
+                    FontSize="15" HorizontalOptions="CenterAndExpand"
+                       FontAttributes="None" TextColor="RosyBrown" TextTransform="None"/>
+            </StackLayout>
+
+        </Grid>
+    </StackLayout>
+</ContentPage>

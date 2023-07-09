@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+               Title="Transaction info"
+             BackgroundColor="#3B2C20"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmallWallet2.Views.TransactionPage">
+    <ScrollView  Margin="14,5,14,0">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Frame HeightRequest="45" BackgroundColor="#582A72"
+                   CornerRadius="5" Grid.Row="0" Padding="10,20,10,18">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout>
+                        <Label Text="Transaction.." FontSize="15"
+                       FontAttributes="Bold" TextColor="White"/>
+                        <Label Text="Transaction summary." FontSize="13"
+                       FontAttributes="None" TextColor="White" Margin="0,-8,0,0"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="EndAndExpand">
+                        <Image Source="transaction.png" HeightRequest="55" Margin="0,-7,10,0"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <StackLayout Grid.Row="1" Margin="3,0,0,0">
+                <material:MaterialLabel Text="Transaction Hash" FontAttributes="Bold"
+                       FontSize="15" TextColor="YellowGreen" />
+                <StackLayout Orientation="Horizontal">
+                    <material:MaterialLabel Text="Hash" FontAttributes="None"
+                       FontSize="14" TextColor="White" Margin="3,-9,0,0" x:Name="Bhash" />
+                    <ImageButton Source="copy.png" HorizontalOptions="EndAndExpand" HeightRequest="19" BackgroundColor="Transparent"
+                       Margin="0,-14,19,0" Clicked="ImageButton_Clicked"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="2" Margin="3,0,0,0">
+                <material:MaterialLabel Text="Address" FontAttributes="Bold"
+                       FontSize="15" TextColor="YellowGreen" />
+                <StackLayout Orientation="Horizontal">
+                    <material:MaterialLabel Text="address" FontAttributes="None"
+                       FontSize="14" TextColor="White" Margin="3,-9,0,0" x:Name="Hash_address" />
+                    <ImageButton Source="copy.png" HorizontalOptions="EndAndExpand" HeightRequest="19" BackgroundColor="Transparent"
+                       Margin="0,-14,19,0" Clicked="ImageButton_Clicked_1"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="3" Margin="3,0,0,0">
+                <material:MaterialLabel Text="date and size of transaction" FontAttributes="Bold"
+                       FontSize="15" TextColor="YellowGreen" />
+                <StackLayout Orientation="Horizontal">
+                    <material:MaterialLabel Text="Date:" FontAttributes="None"
+                       FontSize="14" TextColor="YellowGreen" Margin="3,-9,0,0" HorizontalOptions="Start" />
+                    <material:MaterialLabel Text="date" FontAttributes="None"
+                       FontSize="14" TextColor="White" Margin="3,-9,0,0" x:Name="Hash_date" HorizontalOptions="Start" />
+                    <material:MaterialLabel Text="Size:" FontAttributes="None" HorizontalOptions="EndAndExpand"
+                       FontSize="14" TextColor="YellowGreen" Margin="3,-9,0,0" />
+                    <material:MaterialLabel Text="address" FontAttributes="None" HorizontalOptions="End"
+                       FontSize="14" TextColor="White" Margin="3,-9,0,0" x:Name="Hash_size" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="4" Margin="3,0,0,0">
+                <material:MaterialLabel Text="fee and locktime of transaction" FontAttributes="Bold"
+                       FontSize="15" TextColor="YellowGreen" />
+                <StackLayout Orientation="Horizontal">
+                    <material:MaterialLabel Text="fee:" FontAttributes="None"
+                       FontSize="14" TextColor="Yellow" Margin="3,-9,0,0" HorizontalOptions="Start" />
+                    <material:MaterialLabel Text="fee" FontAttributes="None"
+                       FontSize="14" TextColor="White" Margin="3,-9,0,0" x:Name="Hash_fee" HorizontalOptions="Start" />
+                    <material:MaterialLabel Text="locktime:" FontAttributes="None" HorizontalOptions="EndAndExpand"
+                       FontSize="14" TextColor="LightPink" Margin="3,-9,0,0" />
+                    <material:MaterialLabel Text="locktime" FontAttributes="None" HorizontalOptions="End"
+                       FontSize="14" TextColor="White" Margin="3,-9,0,0" x:Name="Hash_locktime" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="5" Margin="3,0,0,0">
+                <material:MaterialLabel Text="value of transaction" FontAttributes="Bold"
+                       FontSize="15" TextColor="YellowGreen" />
+                <StackLayout Orientation="Horizontal">
+                    <material:MaterialLabel Text="value" FontAttributes="None"
+                       FontSize="14"  Margin="3,-9,0,0" HorizontalOptions="Start" x:Name="H_value"/>
+                    <material:MaterialLabel Text="Confirmation(s):" FontAttributes="Bold"
+                       FontSize="14" TextColor="YellowGreen" Margin="3,-9,0,0" HorizontalOptions="EndAndExpand" x:Name="H_valfeue"/>
+                    <material:MaterialLabel Text="value" FontAttributes="None"
+                       FontSize="14" TextColor="White" Margin="3,-9,0,0" HorizontalOptions="End" x:Name="H_confirmation"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Margin="0,3,0,-177" Grid.Row="6">
+                <material:MaterialLabel Text="Transaction inputs" FontSize="16"
+                                        HorizontalOptions="Start" Margin="0,0,0,0" TextColor="White"
+                                        FontAttributes="Bold"/>
+
+                <ListView x:Name="Hash_inputsList" HasUnevenRows="True" SeparatorVisibility="Default"
+                    RowHeight="90" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Content -->
+                                <Frame BackgroundColor="Purple" HasShadow="True"
+                                                                HeightRequest="20" Margin="0,0,0,3" CornerRadius="2">
+                                    <StackLayout>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0">
+                                                <material:MaterialLabel FontAttributes="Bold" FontSize="12" 
+                                                    HorizontalOptions="Start" TextTransform="Uppercase" Margin="0,-7,0,0"
+                                                    TextColor="White" Text="{Binding address}"/>
+                                                <Image Source="ic_shortcut_arrow_forward_ios.png" Aspect="AspectFit" HeightRequest="20"
+                                                           HorizontalOptions="EndAndExpand"/>
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal" Grid.Row="1" Margin="0,-7,0,0">
+                                                <material:MaterialLabel Text="Value:" FontAttributes="None" FontSize="12"
+                                                    HorizontalOptions="Start"  TextColor="LightGray" Margin="0,-5,0,0"/>
+                                                <material:MaterialLabel Text="{Binding value}" FontAttributes="None" FontSize="12"
+                                                    HorizontalOptions="Start"  TextColor="LightGray" Margin="0,-5,0,0"/>
+                                                <material:MaterialLabel Text="input index:" FontAttributes="Bold" FontSize="12"
+                                                    HorizontalOptions="EndAndExpand"  TextColor="Yellow" Margin="0,-5,0,0"/>
+                                                <material:MaterialLabel Text="{Binding index}" FontAttributes="Bold" FontSize="12"
+                                                    HorizontalOptions="End"  TextColor="Yellow" Margin="0,-5,0,0"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout Margin="0,-555,0,0" Grid.Row="7">
+                <material:MaterialLabel Text="Transaction outputs" FontSize="16"
+                                        HorizontalOptions="Start" Margin="0,0,0,0" TextColor="White"
+                                        FontAttributes="Bold"/>
+
+                <ListView x:Name="Hash_outputsList" HasUnevenRows="True" SeparatorVisibility="Default"
+                    RowHeight="90" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Content -->
+                                <Frame BackgroundColor="#582A72" HasShadow="True"
+                                                                HeightRequest="20" Margin="0,0,0,3" CornerRadius="2">
+                                    <StackLayout>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0">
+                                                <material:MaterialLabel Text="{Binding address}" FontAttributes="Bold" FontSize="13" 
+                                                    HorizontalOptions="Start" TextTransform="Uppercase" Margin="0,-7,0,0"
+                                                    TextColor="White"/>
+                                                <Image Source="ic_shortcut_arrow_forward_ios.png" Aspect="AspectFit" HeightRequest="20"
+                                                           HorizontalOptions="EndAndExpand"/>
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal" Grid.Row="1" Margin="0,-7,0,0">
+                                                <material:MaterialLabel Text="Value:" FontAttributes="None" FontSize="12"
+                                                    HorizontalOptions="Start"  TextColor="LightGray" Margin="0,-5,0,0"/>
+                                                <material:MaterialLabel Text="{Binding value}" FontAttributes="None" FontSize="12"
+                                                    HorizontalOptions="Start"  TextColor="LightGray" Margin="0,-5,0,0"/>
+                                                <material:MaterialLabel Text="output index:" FontAttributes="Bold" FontSize="12"
+                                                    HorizontalOptions="EndAndExpand"  TextColor="Yellow" Margin="0,-5,0,0"/>
+                                                <material:MaterialLabel Text="{Binding index}" FontAttributes="Bold" FontSize="12"
+                                                    HorizontalOptions="End"  TextColor="Yellow" Margin="0,-5,0,0"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+
+    </ScrollView>
+</ContentPage>

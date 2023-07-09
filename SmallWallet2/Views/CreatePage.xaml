@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               Title="Create"
+             BackgroundColor="#3B2C20"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="SmallWallet2.Views.CreatePage">
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Margin="14,5,14,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Frame HeightRequest="45" BackgroundColor="#6A2C8B" Padding="10,20,10,18"
+                   CornerRadius="5" Grid.Row="0">
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Vertical">
+                                <material:MaterialLabel Text="create your new wallet" FontSize="15"
+                       FontAttributes="Bold" TextColor="White" TextTransform="Uppercase"/>
+                                <material:MaterialLabel Text="Create and manage your new wallet" FontSize="13"
+                       FontAttributes="None" TextColor="White" Margin="0,-9,0,0"/>
+                            </StackLayout>
+                            <Image Source="new_product.png" Aspect="AspectFit" HeightRequest="90" HorizontalOptions="EndAndExpand"
+                                   Margin="0,-13,0,0"/>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout Grid.Row="1"  Margin="10,19,10,10">
+                        <material:MaterialEntry LabelText="Name of wallet" LabelSize="20" Placeholder="Enter name of wallet" x:Name="bitName"
+                                 LabelTextColor="White"   BackgroundColor="White"  MaxLength="24" PlaceholderColor="DarkGray"
+                                          BorderColor="Black" Text="{Binding CreateName}"/>
+                        <material:MaterialFlatButton Text="Create Wallet" TextColor="White" BackgroundColor="Purple" Clicked="MaterialFlatButton_Clicked"
+                                       Icon="newFile.png"    Margin="0,5,0,0" Command="{Binding SendBcommand}"/>
+                        <ActivityIndicator  Color="Red" x:Name="BusyBusy" HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"  IsRunning="{Binding IsLoading}"/>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

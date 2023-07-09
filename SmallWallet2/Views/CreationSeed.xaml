@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             BackgroundColor="#3B2C20"
+             Title="New Wallet Seed"
+             x:Class="SmallWallet2.Views.CreationSeed">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior
+        IsEnabled="False"
+            IconOverride="list_1.png"/>
+    </Shell.BackButtonBehavior>
+    <StackLayout Margin="14,5,14,0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Orientation="Vertical" Margin="10,10,10,10">
+                <material:MaterialLabel 
+                    Text="Securely Store the below wallet Seed.  It will be used to recover your wallet."
+                    FontSize="15" HorizontalOptions="Start"
+                       FontAttributes="None" TextColor="White" TextTransform="None"/>
+                <material:MaterialLabel 
+                    Text="DON'T MISPLACE IT. GUIDE IT"
+                    FontSize="15" HorizontalOptions="Start"
+                       FontAttributes="Bold" TextColor="White" TextTransform="Uppercase"
+                    Margin="0,10,0,10"/>
+            </StackLayout >
+            <Frame HeightRequest="120" BackgroundColor="#6A2C8B" Padding="15,49,10,18"
+                   CornerRadius="5" Grid.Row="1">
+                <StackLayout>
+                    <material:MaterialLabel FontSize="16" x:Name="seedInFullName"
+                       FontAttributes="Bold" TextColor="White" TextTransform="None"/>
+
+                </StackLayout>
+
+            </Frame>
+            <StackLayout Grid.Row="2" Orientation="Vertical" Margin="10,37,10,0">
+                <material:MaterialLabel 
+                    Text="ENSURE YOU HAVE SAVED  YOUR SEED."
+                    FontSize="15" HorizontalOptions="Start"
+                       FontAttributes="Bold" TextColor="White" TextTransform="Uppercase"/>
+            </StackLayout >
+            <StackLayout Grid.Row="3" Orientation="Vertical" Margin="10,17,10,0">
+                <material:MaterialButton 
+                    Text="I UNDERSTAND" BackgroundColor="MediumVioletRed" TextColor="White" Command="{Binding gotoListWallet}"/>
+            </StackLayout >
+            <ActivityIndicator  Color="Red" x:Name="BusyBusy" HorizontalOptions="CenterAndExpand"
+                    IsRunning="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
