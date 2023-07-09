@@ -11,3 +11,6 @@ Learning xamarin in the year 2021 and the first project i built to test my skill
 * CreatePage
 * AboutPage
 * ClickPage
+  ### Main Dashboard of wallet
+  
+![Screenshot_1640194460](https://github.com/Humble2020/Xamarin-Bitcoin-Wallet/assets/118256659/ec7fc202-e717-4256-b5fa-891bb7ee6418)
