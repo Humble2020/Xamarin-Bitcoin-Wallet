@@ -24,3 +24,6 @@ Learning xamarin in the year 2021 and the first project i built to test my skill
   
   ##### Receive Page
   <img src="https://github.com/Humble2020/Xamarin-Bitcoin-Wallet/assets/118256659/10d0d0bd-6b9a-4441-b0ea-4925f24c2734" width="40%" height="40%">
+  
+  ##### Send Page
+  <img src="https://github.com/Humble2020/Xamarin-Bitcoin-Wallet/assets/118256659/3f8a57a7-6d2b-4ac9-a200-76f34fd312ce" width="40%" height="40%">
