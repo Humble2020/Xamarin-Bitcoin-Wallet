@@ -14,5 +14,5 @@ Learning xamarin in the year 2021 and the first project i built to test my skill
   ### Main Dashboard of wallet
   
 
-<img src="[url](https://github.com/Humble2020/Xamarin-Bitcoin-Wallet/assets/118256659/ec7fc202-e717-4256-b5fa-891bb7ee6418)https://github.com/Humble2020/Xamarin-Bitcoin-Wallet/assets/118256659/ec7fc202-e717-4256-b5fa-891bb7ee6418" width="40%" height="40%">
+<img src="https://github.com/Humble2020/Xamarin-Bitcoin-Wallet/assets/118256659/ec7fc202-e717-4256-b5fa-891bb7ee6418" width="40%" height="40%">
 
