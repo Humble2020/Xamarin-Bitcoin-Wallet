@@ -18,3 +18,14 @@ Learning xamarin in the year 2021 and the first project i built to test my skill
 <img src="https://github.com/Humble2020/Xamarin-Bitcoin-Wallet/assets/118256659/be74413b-fb6d-4c1d-9685-fa7a7ad096cd" width="30%" height="50%">
 <img src="https://github.com/Humble2020/Xamarin-Bitcoin-Wallet/assets/118256659/10d0d0bd-6b9a-4441-b0ea-4925f24c2734" width="30%" height="50%">
 <img src="https://github.com/Humble2020/Xamarin-Bitcoin-Wallet/assets/118256659/3f8a57a7-6d2b-4ac9-a200-76f34fd312ce" width="30%" height="50%">
+
+## Models
+
+  ```C#
+WalletData.cs
+walletFIleSerializer.cs
+walletInfo.cs
+walletManagement.cs
+walletViewModel.cs
+
+```
