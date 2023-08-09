@@ -1,5 +1,5 @@
 # Xamarin-Bitcoin-Wallet
-Learning xamarin in the year 2021 and the first project i built to test my skill was this wallet. A bitcoin wallet that sends and receive bitcoins and can load the wallet transactions off blockchain. You can create muliple accounts  in the wallet. You also can transfre funds between accounts. Receive funds, Send funds also Recover funds..
+Learning Xamarin in the year 2021 and the first project i built to test my skill was this wallet. A bitcoin wallet that sends and receive bitcoins and can load the wallet transactions off blockchain. You can create multiple accounts  in the wallet. You also can transfer funds between accounts. Receive funds, Send funds also Recover funds..
 
 ## Pages
 * MyWalletPage
